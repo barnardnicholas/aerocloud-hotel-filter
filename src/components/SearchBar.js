@@ -15,11 +15,18 @@ class SearchBar extends Component {
     console.dir(innerHTML);
   };
 
+  clearSearchTerms = () => {
+    this.setState({ searchTerms: [] });
+  };
+
   render() {
     return (
       <form className="searchbar" onSubmit={this.preventReload}>
-        <div className="searchbutton" style={{ border: "none" }}>
-          <label>Search Terms</label>
+        <div
+          className="searchbutton"
+          style={{ border: "none", fontSize: "10px" }}
+        >
+          <label>Show me hotels with:</label>
         </div>
         <button className="searchbutton" onClick={this.clickToToggle}>
           car park
@@ -38,6 +45,13 @@ class SearchBar extends Component {
         </button>
         <button className="searchbutton" onClick={this.clickToToggle}>
           pool
+        </button>
+        <button
+          className="searchbutton"
+          onClick={this.clearSearchTerms}
+          style={{ width: "48px" }}
+        >
+          clear
         </button>
       </form>
     );
