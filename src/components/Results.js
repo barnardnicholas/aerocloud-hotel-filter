@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as data from "../data/data";
 import ResultCard from "./ResultCard";
+import "./results.css";
 
 class Results extends Component {
   state = {
@@ -8,14 +9,13 @@ class Results extends Component {
   };
 
   componentDidMount() {
-    console.log(data.hotels);
     this.setState({ results: data.hotels });
   }
 
   render() {
     const { results } = this.state;
     return (
-      <ul>
+      <ul className="resultsarea">
         {results.map(result => {
           const { name, starRating, facilities } = result;
           return (

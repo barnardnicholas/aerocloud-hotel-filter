@@ -1,0 +1,13 @@
+.searchbar {
+  border: 1px solid;
+  margin: 24px;
+  height: 64px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.searchbutton {
+  width: 96px;
+  border: 1px solid;
+  margin: 8px;
+}
