@@ -1,6 +1,8 @@
 const { expect } = require("chai");
 const { detectMatch } = require("../utils/utils");
 
+// Takes a hotel object and an array of search terms and returns true/false if all facilities are present
+
 describe("detectMatch", () => {
   it("1 - Returns a boolean", () => {
     const hotel = { name: "", starRating: 0, facilities: [] };
@@ -19,5 +21,11 @@ describe("detectMatch", () => {
     const searchTerms = ["car park"];
     const actualResult = detectMatch(hotel, searchTerms);
     expect(actualResult).to.equal(false);
+  });
+  it("4 - Returns true for multiple correct search terms", () => {
+    const hotel = { name: "", starRating: 0, facilities: ["pool", "car park"] };
+    const searchTerms = ["car park", "pool"];
+    const actualResult = detectMatch(hotel, searchTerms);
+    expect(actualResult).to.equal(true);
   });
 });
