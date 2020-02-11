@@ -48,4 +48,14 @@ describe("detectMatch", () => {
     const actualResult = detectMatch(hotel, searchTerms);
     expect(actualResult).to.equal(false);
   });
+  it("7 - Returns true for no search terms", () => {
+    const hotel = {
+      name: "",
+      starRating: 0,
+      facilities: ["car park", "ice machine"]
+    };
+    const searchTerms = [];
+    const actualResult = detectMatch(hotel, searchTerms);
+    expect(actualResult).to.equal(true);
+  });
 });
