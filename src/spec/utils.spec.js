@@ -28,4 +28,14 @@ describe("detectMatch", () => {
     const actualResult = detectMatch(hotel, searchTerms);
     expect(actualResult).to.equal(true);
   });
+  it("5 - Returns false for multiple incorrect search terms", () => {
+    const hotel = {
+      name: "",
+      starRating: 0,
+      facilities: ["spa", "ice machine"]
+    };
+    const searchTerms = ["car park", "pool"];
+    const actualResult = detectMatch(hotel, searchTerms);
+    expect(actualResult).to.equal(false);
+  });
 });
