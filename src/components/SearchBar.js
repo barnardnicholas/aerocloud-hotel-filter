@@ -9,6 +9,9 @@ class SearchBar extends Component {
   render() {
     return (
       <form className="searchbar">
+        <div className="searchbutton" style={{ border: "none" }}>
+          <label>Search Terms</label>
+        </div>
         <button className="searchbutton">1</button>
         <button className="searchbutton">2</button>
         <button className="searchbutton">3</button>
