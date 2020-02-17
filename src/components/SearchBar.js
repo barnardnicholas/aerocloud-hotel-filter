@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import "./searchbar.css";
+import Results from "./Results";
+import * as data from "../data/data";
 const { removeItemFromArray } = require("../utils/utils");
+const { detectMatch } = require("../utils/utils");
 
 class SearchBar extends Component {
   state = {
-    searchTerms: []
+    searchTerms: [],
+    results: []
   };
 
   preventReload = event => {
@@ -19,7 +23,10 @@ class SearchBar extends Component {
     } else {
       newSearchTerms.push(innerHTML);
     }
-    this.setState({ searchTerms: newSearchTerms });
+    let newResults = data.hotels.filter(result => {
+      return detectMatch(result, newSearchTerms);
+    });
+    this.setState({ searchTerms: newSearchTerms, results: newResults });
   };
 
   clearSearchTerms = () => {
@@ -44,43 +51,36 @@ class SearchBar extends Component {
   };
 
   render() {
+    const { results, searchTerms } = this.state;
     return (
-      <form className="searchbar" onSubmit={this.preventReload}>
-        <div
-          className="searchbutton"
-          style={{ border: "none", fontSize: "10px" }}
-        >
-          <label>Show me hotels with:</label>
-        </div>
-        {this.renderButton("car park")}
-        {this.renderButton("spa")}
-        {this.renderButton("sauna")}
-        {this.renderButton("ice machine")}
-        {this.renderButton("pool")}
-        {/* <button className="searchbutton" onClick={this.clickToToggle}>
-          gym
-        </button>
-        <button className="searchbutton" onClick={this.clickToToggle}>
-          spa
-        </button>
-        <button className="searchbutton" onClick={this.clickToToggle}>
-          sauna
-        </button>
-        <button className="searchbutton" onClick={this.clickToToggle}>
-          ice machine
-        </button>
-        <button className="searchbutton" onClick={this.clickToToggle}>
-          pool
-        </button> */}
-        <button
-          className="searchbutton"
-          onClick={this.clearSearchTerms}
-          style={{ width: "48px" }}
-        >
-          clear
-        </button>
-      </form>
+      <>
+        <form className="searchbar" onSubmit={this.preventReload}>
+          <div
+            className="searchbutton"
+            style={{ border: "none", fontSize: "10px" }}
+          >
+            <label>Show me hotels with:</label>
+          </div>
+          {this.renderButton("car park")}
+          {this.renderButton("spa")}
+          {this.renderButton("sauna")}
+          {this.renderButton("ice machine")}
+          {this.renderButton("pool")}
+          <button
+            className="searchbutton"
+            onClick={this.clearSearchTerms}
+            style={{ width: "48px" }}
+          >
+            clear
+          </button>
+        </form>
+        <Results results={results} searchTerms={searchTerms} />
+      </>
     );
+  }
+
+  componentDidMount() {
+    this.setState({ results: data.hotels });
   }
 }
 
