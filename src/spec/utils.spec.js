@@ -67,4 +67,11 @@ describe("removeItemFromArray", () => {
     const actualResult = removeItemFromArray(testArray, testItem);
     expect(actualResult).to.be.an("array");
   });
+  it("2 - does not mutate original array", () => {
+    const testArray = ["A", "B", "C", "D"];
+    const testArray2 = ["A", "B", "C", "D"];
+    const testItem = "A";
+    removeItemFromArray(testArray, testItem);
+    expect(testArray).to.eql(testArray2);
+  });
 });
