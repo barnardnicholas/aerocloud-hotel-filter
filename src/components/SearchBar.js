@@ -26,6 +26,23 @@ class SearchBar extends Component {
     this.setState({ searchTerms: [] });
   };
 
+  renderButton = innerHTML => {
+    const { searchTerms } = this.state;
+    const buttonStyling = {
+      backgroundColor: searchTerms.includes(innerHTML) ? "black" : "white",
+      color: searchTerms.includes(innerHTML) ? "white" : "black"
+    };
+    return (
+      <button
+        className="searchbutton"
+        onClick={this.clickToToggle}
+        style={buttonStyling}
+      >
+        {innerHTML}
+      </button>
+    );
+  };
+
   render() {
     return (
       <form className="searchbar" onSubmit={this.preventReload}>
@@ -35,10 +52,12 @@ class SearchBar extends Component {
         >
           <label>Show me hotels with:</label>
         </div>
-        <button className="searchbutton" onClick={this.clickToToggle}>
-          car park
-        </button>
-        <button className="searchbutton" onClick={this.clickToToggle}>
+        {this.renderButton("car park")}
+        {this.renderButton("spa")}
+        {this.renderButton("sauna")}
+        {this.renderButton("ice machine")}
+        {this.renderButton("pool")}
+        {/* <button className="searchbutton" onClick={this.clickToToggle}>
           gym
         </button>
         <button className="searchbutton" onClick={this.clickToToggle}>
@@ -52,7 +71,7 @@ class SearchBar extends Component {
         </button>
         <button className="searchbutton" onClick={this.clickToToggle}>
           pool
-        </button>
+        </button> */}
         <button
           className="searchbutton"
           onClick={this.clearSearchTerms}
