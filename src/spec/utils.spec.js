@@ -89,4 +89,10 @@ describe("removeItemFromArray", () => {
     expect(actualResult).to.eql(testArray);
     expect(actualResult).to.not.equal(testArray);
   });
+  it("5 - Returns copy of original array unchanged if item is undefined", () => {
+    const testArray = ["A", "B", "C", "D"];
+    const actualResult = removeItemFromArray(testArray);
+    expect(actualResult).to.eql(testArray);
+    expect(actualResult).to.not.equal(testArray);
+  });
 });

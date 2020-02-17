@@ -12,7 +12,7 @@ const detectMatch = (hotel, searchTerms) => {
 };
 
 const removeItemFromArray = (array, item) => {
-  if (!array.includes(item)) {
+  if (!array.includes(item) || !item) {
     return [...array];
   } else {
     return array.filter(element => {
