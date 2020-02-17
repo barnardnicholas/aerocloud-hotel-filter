@@ -12,7 +12,13 @@ const detectMatch = (hotel, searchTerms) => {
 };
 
 const removeItemFromArray = (array, item) => {
-  return [];
+  if (!array.includes(item)) {
+    return [...array];
+  } else {
+    return array.filter(element => {
+      return element !== item;
+    });
+  }
 };
 
 module.exports = {

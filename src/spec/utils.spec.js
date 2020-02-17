@@ -67,11 +67,18 @@ describe("removeItemFromArray", () => {
     const actualResult = removeItemFromArray(testArray, testItem);
     expect(actualResult).to.be.an("array");
   });
-  it("2 - does not mutate original array", () => {
+  it("2 - Does not mutate original array", () => {
     const testArray = ["A", "B", "C", "D"];
     const testArray2 = ["A", "B", "C", "D"];
     const testItem = "A";
     removeItemFromArray(testArray, testItem);
     expect(testArray).to.eql(testArray2);
+  });
+  it("3 - Returns copy of array with original item removed if item is present", () => {
+    const testArray = ["A", "B", "C", "D"];
+    const testItem = "A";
+    const actualResult = removeItemFromArray(testArray, testItem);
+    const expectedResult = ["B", "C", "D"];
+    expect(actualResult).to.eql(expectedResult);
   });
 });
