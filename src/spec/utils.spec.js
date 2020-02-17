@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const { detectMatch } = require("../utils/utils");
+const { detectMatch, removeItemFromArray } = require("../utils/utils");
 
 // Takes a hotel object and an array of search terms and returns true/false if all facilities are present
 
@@ -57,5 +57,14 @@ describe("detectMatch", () => {
     const searchTerms = [];
     const actualResult = detectMatch(hotel, searchTerms);
     expect(actualResult).to.equal(true);
+  });
+});
+
+describe("removeItemFromArray", () => {
+  it("1 - Returns an array", () => {
+    const testArray = ["A", "B", "C", "D"];
+    const testItem = "A";
+    const actualResult = removeItemFromArray(testArray, testItem);
+    expect(actualResult).to.be.an("array");
   });
 });

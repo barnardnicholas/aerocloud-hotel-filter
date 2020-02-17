@@ -13,6 +13,11 @@ class SearchBar extends Component {
   clickToToggle = event => {
     const { innerHTML } = event.target;
     console.dir(innerHTML);
+    const newSearchTerms = [...this.state.searchTerms];
+    if (newSearchTerms.includes(innerHTML)) {
+      // need util to remove item from array
+    }
+    this.setState({ searchTerms: newSearchTerms });
   };
 
   clearSearchTerms = () => {

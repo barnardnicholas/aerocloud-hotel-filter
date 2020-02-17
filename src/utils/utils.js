@@ -11,6 +11,11 @@ const detectMatch = (hotel, searchTerms) => {
   return result;
 };
 
+const removeItemFromArray = (array, item) => {
+  return [];
+};
+
 module.exports = {
-  detectMatch
+  detectMatch,
+  removeItemFromArray
 };
