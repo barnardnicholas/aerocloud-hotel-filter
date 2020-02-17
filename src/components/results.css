@@ -4,3 +4,8 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+ul {
+  margin: 8px;
+  padding: 0;
+}

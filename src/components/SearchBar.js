@@ -30,7 +30,7 @@ class SearchBar extends Component {
   };
 
   clearSearchTerms = () => {
-    this.setState({ searchTerms: [] });
+    this.setState({ searchTerms: [], results: data.hotels });
   };
 
   renderButton = innerHTML => {

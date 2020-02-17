@@ -11,3 +11,8 @@
   border: 1px solid;
   margin: 8px;
 }
+
+.searchbutton:active {
+  background-color: black;
+  color: white;
+}
