@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./searchbar.css";
+const { removeItemFromArray } = require("../utils/utils");
 
 class SearchBar extends Component {
   state = {
@@ -12,10 +13,11 @@ class SearchBar extends Component {
 
   clickToToggle = event => {
     const { innerHTML } = event.target;
-    console.dir(innerHTML);
-    const newSearchTerms = [...this.state.searchTerms];
+    let newSearchTerms = [...this.state.searchTerms];
     if (newSearchTerms.includes(innerHTML)) {
-      // need util to remove item from array
+      newSearchTerms = removeItemFromArray(newSearchTerms, innerHTML);
+    } else {
+      newSearchTerms.push(innerHTML);
     }
     this.setState({ searchTerms: newSearchTerms });
   };
